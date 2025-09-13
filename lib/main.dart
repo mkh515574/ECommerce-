@@ -1,3 +1,4 @@
+import 'package:ecommerce/core/utils/app_routes.dart';
 import 'package:ecommerce/core/utils/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,7 +18,14 @@ class MyApp extends StatelessWidget {
       designSize: const Size(430, 932),
       minTextAdapt: true,
       splitScreenMode: true,
-      child: MaterialApp(title: 'ECommerce App', theme: AppTheme.lightTheme),
+
+      child: MaterialApp(
+        title: 'ECommerce App',
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.lightTheme,
+        initialRoute: AppRoutes.loginRoute,
+        routes: AppRoutes.routes,
+      ),
     );
   }
 }
