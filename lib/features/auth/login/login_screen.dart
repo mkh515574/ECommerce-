@@ -27,7 +27,9 @@ class _LoginScreenState extends State<LoginScreen> {
   var formKey = GlobalKey<FormState>();
 
   void login() {
-    if (formKey.currentState!.validate()) {}
+    if (formKey.currentState!.validate()) {
+      Navigator.pushReplacementNamed(context, AppRoutes.homeRoute);
+    }
   }
 
   @override
