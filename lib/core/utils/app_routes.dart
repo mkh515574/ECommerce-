@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../features/auth/login/login_screen.dart';
+import '../../features/auth/register/register_screen.dart';
 
 class AppRoutes {
   static String homeRoute = "home";
@@ -16,7 +17,7 @@ class AppRoutes {
    // productRoute: (context) => const ProductDetailsScreen(),
     //cartRoute: (context) => const CartScreen(),
     loginRoute: (context) => const LoginScreen(),
-    //registerRoute: (context) => const RegisterScreen(),
+    registerRoute: (context) =>  const RegisterScreen(),
 
   };
 }
