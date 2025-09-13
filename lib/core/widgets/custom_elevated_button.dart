@@ -1,3 +1,4 @@
+import 'package:ecommerce/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/app_colors.dart';
@@ -30,10 +31,10 @@ class CustomElevatedButton extends StatelessWidget {
         backgroundColor: backgroundColor ?? AppColors.yellowColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
-          side: BorderSide(color: borderSideColor ?? AppColors.yellowColor, width: 1.5),
+          side: BorderSide(color: borderSideColor ?? AppColors.whiteColor, width: 1.5),
         ),
       ),
-      child: Text(text),
+      child: Text(text,style: AppStyles.semi20Primary,),
     );
   }
 }

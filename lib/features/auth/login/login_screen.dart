@@ -27,8 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
   var formKey = GlobalKey<FormState>();
 
   void login() {
-    if (formKey.currentState!.validate()) {
-    }
+    if (formKey.currentState!.validate()) {}
   }
 
   @override
@@ -53,7 +52,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-
                     AutoSizeText(
                       'Welcome Back To Route',
                       style: AppStyles.semi24White,
@@ -72,9 +70,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
                             Text("User Name", style: AppStyles.medium18White),
+                            SizedBox(height: 16.h),
+
                             CustomTextFormField(
                               //isPassword: false,
-
                               keyboardType: TextInputType.text,
                               obscureText: false,
                               hintText: "enter your name",
@@ -83,9 +82,12 @@ class _LoginScreenState extends State<LoginScreen> {
                               controller: userNameController,
                               validator: AppValidators.validateEmail,
                             ),
+                            SizedBox(height: 16.h),
                             Text("Password", style: AppStyles.medium18White),
+                            SizedBox(height: 16.h),
+
                             CustomTextFormField(
-                             // isPassword: true,
+                              // isPassword: true,
                               keyboardType: TextInputType.visiblePassword,
                               obscureText: true,
                               hintText: "enter your password",
@@ -98,6 +100,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 icon: Icon(Icons.visibility_off),
                               ),
                             ),
+                            SizedBox(height: 16.h),
+
                             InkWell(
                               onTap: () {},
                               child: Text(
