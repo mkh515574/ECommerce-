@@ -1,5 +1,6 @@
 import 'package:ecommerce/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../utils/app_colors.dart';
 
@@ -24,17 +25,28 @@ class CustomElevatedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
+
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.symmetric(vertical: height * 0.02),
-        backgroundColor: backgroundColor ?? AppColors.yellowColor,
+
+        padding: EdgeInsets.symmetric(vertical: height * 0.01,horizontal: 20.w),
+        backgroundColor: backgroundColor ?? AppColors.primaryColor,
+
         shape: RoundedRectangleBorder(
+
           borderRadius: BorderRadius.circular(16),
           side: BorderSide(color: borderSideColor ?? AppColors.whiteColor, width: 1.5),
         ),
       ),
-      child: Text(text,style: AppStyles.semi20Primary,),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          buttonContent ?? Container(),
+          SizedBox(width: 10,),
+          Text(text,style: textStyle??AppStyles.semi20Primary.copyWith(color: AppColors.whiteColor),),
+        ],
+      ),
     );
   }
 }
