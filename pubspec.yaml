@@ -38,6 +38,7 @@ dependencies:
   flutter_screenutil: ^5.9.3
   fluttertoast: ^8.2.12
   auto_size_text: ^3.0.0
+  carousel_slider: ^5.1.1
 
 dev_dependencies:
   flutter_test:

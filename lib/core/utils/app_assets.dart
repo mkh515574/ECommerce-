@@ -17,6 +17,7 @@ class AppAssets {
   static const String starIcon = "assets/icons/star.png";
   static const String routeLogo = "assets/icons/route_logo.png";
   static const String shoppingCart = "assets/icons/shopping_cart.png";
+  static const String searchIcon = "assets/icons/search.png";
 
   // Announcements Images
   static const String announcement1 = "assets/images/banner-1.png";

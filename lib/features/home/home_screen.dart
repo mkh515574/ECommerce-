@@ -6,10 +6,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../category/category_screen.dart';
 import '../favourites/favourite_screen.dart';
 import '../profile/profile_screen.dart';
-import 'widgets/home_screen_body.dart';
+import 'home_tab/home_screen_body.dart';
+
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({super.key});
+
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
