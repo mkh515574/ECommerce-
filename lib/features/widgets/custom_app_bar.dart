@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -31,8 +30,21 @@ class CustomAppBar extends StatelessWidget {
                   hintStyle: AppStyles.light14SearchHint,
                 ),
               ),
-              SizedBox(width: 16.w),
-              Image.asset(AppAssets.shoppingCart),
+              Badge(
+                alignment: Alignment.topLeft,
+                backgroundColor: AppColors.greenColor,
+                largeSize: 18,
+                label: Text(
+                  "2",
+                  style: AppStyles.medium18White.copyWith(fontSize: 14),
+                ),
+                child: SizedBox(
+                  width: 40,
+                  height: 40,
+                  child: Image.asset(AppAssets.shoppingCart),
+                ),
+              )
+
             ],
           ),
         ],
