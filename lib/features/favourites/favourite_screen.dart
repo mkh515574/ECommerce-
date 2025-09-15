@@ -1,10 +1,15 @@
+import 'package:ecommerce/features/favourites/widgets/favourite_list_builder.dart';
 import 'package:flutter/material.dart';
+
+import '../widgets/custom_app_bar.dart';
 
 class FavouriteScreen extends StatelessWidget {
   const FavouriteScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return SafeArea(
+      child: Column(children: [CustomAppBar(), FavouriteListBuilder()]),
+    );
   }
 }
