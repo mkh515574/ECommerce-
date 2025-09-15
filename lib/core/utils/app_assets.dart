@@ -1,7 +1,7 @@
 class AppAssets {
   // Selected Icons
   static const String selectedHomeIcon = "assets/icons/home_icon_selected.png";
-  static const String editIcon = "assets/icons/edit.png";
+  static const String editIcon = "assets/icons/edit_icon.png";
   static const String selectedCategoryIcon = "assets/icons/category_icon_selected.png";
   static const String selectedAccountIcon = "assets/icons/account_icon_selected.png";
   static const String selectedAddToFavouriteIcon = "assets/icons/add_to_favourite.png";
@@ -41,4 +41,5 @@ class AppAssets {
   static const String shoesItemImage3 = "assets/images/items/shoes-3.png";
 
   static const String appBarLeading = 'assets/images/Route.png';
+
 }
