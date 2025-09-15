@@ -39,6 +39,8 @@ dependencies:
   fluttertoast: ^8.2.12
   auto_size_text: ^3.0.0
   carousel_slider: ^5.1.1
+  rich_readmore: ^1.1.1
+  animated_read_more_text: ^0.0.6
 
 dev_dependencies:
   flutter_test:
