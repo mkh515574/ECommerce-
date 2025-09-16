@@ -1,9 +1,15 @@
+import 'package:bloc/bloc.dart';
 import 'package:ecommerce/core/utils/app_routes.dart';
 import 'package:ecommerce/core/utils/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'core/config/di/di.dart';
+import 'core/helper/bloc_observer.dart';
+
 void main() {
+  Bloc.observer = MyBlocObserver();
+  configureDependencies();
   runApp(const MyApp());
 }
 
