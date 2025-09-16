@@ -16,6 +16,7 @@ class AppAssets {
   static const String unSelectedFavouriteIcon = "assets/icons/favourite_not_selected.png";
   static const String selectedFavouriteIcon = "assets/icons/favourite_selected.png";
   static const String starIcon = "assets/icons/star.png";
+  static const String removeIcon = "assets/icons/delete.png";
   static const String routeLogo = "assets/icons/route_logo.png";
   static const String shoppingCart = "assets/icons/shopping_cart.png";
   static const String searchIcon = "assets/icons/search.png";
