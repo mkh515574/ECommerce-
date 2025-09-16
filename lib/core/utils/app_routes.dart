@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../features/auth/login/login_screen.dart';
-import '../../features/auth/register/register_screen.dart';
+import '../../features/auth/login/view/login_screen.dart';
+import '../../features/auth/register/view/register_screen.dart';
 import '../../features/cart/cart_screen.dart';
 import '../../features/category/category_screen.dart';
 import '../../features/home/home_screen.dart';
@@ -20,8 +20,8 @@ class AppRoutes {
     homeRoute: (context) =>  HomeScreen(),
     productRoute: (context) => const ProductDetailsScreen(),
     cartRoute: (context) => const CartScreen(),
-    loginRoute: (context) => const LoginScreen(),
+    loginRoute: (context) =>  LoginScreen(),
     categoryRoute: (context) => const CategoryScreen(),
-    registerRoute: (context) => const RegisterScreen(),
+    registerRoute: (context) =>  RegisterScreen(),
   };
 }
