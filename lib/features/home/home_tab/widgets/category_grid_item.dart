@@ -1,12 +1,17 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:ecommerce/domain/entities/response/category/category.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_styles.dart';
 
+
+
 class CategoryGridItem extends StatelessWidget {
-  const CategoryGridItem({super.key});
+
+  final Category category;
+  const CategoryGridItem({super.key, required this.category});
 
   @override
   Widget build(BuildContext context) {
@@ -18,12 +23,12 @@ class CategoryGridItem extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 40.w,
-            backgroundImage: AssetImage("assets/images/Ellipse 14.png"),
+            backgroundImage: NetworkImage(category.image??""),
           ),
           SizedBox(height: 8.h),
 
           AutoSizeText(
-            "Women’s fashion",
+            category.name??"",
             style: AppStyles.medium14Category.copyWith(
               color: AppColors.primaryDark,
             ),
