@@ -2,6 +2,7 @@ import 'package:ecommerce/core/utils/app_assets.dart';
 import 'package:ecommerce/core/utils/app_colors.dart';
 import 'package:ecommerce/core/utils/app_styles.dart';
 import 'package:ecommerce/core/widgets/custom_text_form_field.dart';
+import 'package:ecommerce/features/home/home_tab/widgets/brand_grid_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -23,7 +24,7 @@ class HomeScreenBody extends StatelessWidget {
             _buildDividerText(text: "Categories"),
             CategoryGridBuilder(),
             _buildDividerText(text: "Brands"),
-            CategoryGridBuilder(),
+            BrandGridBuilder(),
           ],
         ),
       ),
