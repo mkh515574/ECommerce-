@@ -13,6 +13,8 @@ class CustomElevatedButton extends StatelessWidget {
     this.textStyle,
     required this.text,
     this.buttonContent,
+    this.buttonContent1,
+
   });
 
   final VoidCallback? onPressed;
@@ -21,6 +23,8 @@ class CustomElevatedButton extends StatelessWidget {
   final TextStyle? textStyle;
   final String text;
   final Widget? buttonContent;
+  final Widget? buttonContent1;
+
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +58,8 @@ class CustomElevatedButton extends StatelessWidget {
                 textStyle ??
                 AppStyles.semi20Primary.copyWith(color: AppColors.whiteColor),
           ),
+          buttonContent1 ?? Container(),
+
         ],
       ),
     );
