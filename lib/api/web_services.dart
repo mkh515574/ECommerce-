@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:ecommerce/api/model/request/login_request_dto.dart';
 import 'package:ecommerce/api/model/response/auth_response_dto.dart';
 import 'package:ecommerce/api/model/response/category/category_dto.dart';
+import 'package:ecommerce/api/model/response/products/products_response_dto.dart';
 import 'package:retrofit/retrofit.dart';
 
 import 'api_end_points.dart';
@@ -28,4 +29,9 @@ abstract class WebServices {
   Future<CategoryResponseDto> getAllBrands(
       @Query("limit") int limit,
       );
+  @GET(ApiEndPoints.productsApiUrl)
+  Future<ProductsResponseDto> getAllProducts();
+
+
+
 }
