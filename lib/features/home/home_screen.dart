@@ -3,7 +3,7 @@ import 'package:ecommerce/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../category/category_screen.dart';
+import '../category/view/category_screen.dart';
 import '../favourites/favourite_screen.dart';
 import '../profile/profile_screen.dart';
 import 'home_tab/home_screen_body.dart';
@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List<Widget> pages = [
      HomeScreenBody(),
-    const CategoryScreen(),
+     CategoryScreen(),
     const FavouriteScreen(),
      ProfileScreen(),
   ];
