@@ -1,3 +1,4 @@
+import 'package:ecommerce/features/cart/viewModel/cart_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -40,7 +41,7 @@ class CustomAppBar extends StatelessWidget {
                   backgroundColor: AppColors.greenColor,
                   largeSize: 18,
                   label: Text(
-                    "2",
+                    "${CartViewModel.instance.numOfCartItems}",
                     style: AppStyles.medium18White.copyWith(fontSize: 14),
                   ),
                   child: SizedBox(

@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:ecommerce/core/exceptions/app_exceptions.dart';
+import 'package:ecommerce/core/helper/shared_pref_manger.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
@@ -18,7 +19,10 @@ class LoginViewModel extends Cubit<AuthStates> {
       try {
         emit(AuthLoadingState());
         final loginRequest = LoginRequest(email: email, password: password);
+
         final response = await loginUseCase.invoke(loginRequest);
+        final prefs = SharedPrefManager();
+        await prefs.setString("token", "${response.token}");
         emit(AuthSuccessState(response));
       } on AppException catch (e) {
         emit(AuthErrorState(exception: e.message));

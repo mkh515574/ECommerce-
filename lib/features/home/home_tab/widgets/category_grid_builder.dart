@@ -6,42 +6,41 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../viewModel/home_view_model.dart';
 import 'category_grid_item.dart';
-
-
 class CategoryGridBuilder extends StatelessWidget {
-  HomeViewModel homeViewModel = getIt<HomeViewModel>();
+  final HomeViewModel homeViewModel = getIt<HomeViewModel>();
 
-   CategoryGridBuilder({super.key});
+  CategoryGridBuilder({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeViewModel, HomeStates>(
-      bloc: homeViewModel..getAllCategories(),
-
-      builder: (context, state) {
-       if(state is HomeSuccessState){
-           return SizedBox(
-           height: 270.h,
-           child: GridView.builder(
-             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-               crossAxisCount: 2,
-               crossAxisSpacing: 10.w,
-               mainAxisSpacing: 10.h,
-             ),
-             scrollDirection: Axis.horizontal,
-             itemBuilder: (context, index) =>
-                 CategoryGridItem(
-                   category: state.categories[index],
-                 ),
-             itemCount: state.categories.length,
-           ),
-         );
-       }else if(state is HomeErrorState){
-         return Text(state.message);
-       }else{
-         return Center(child: CircularProgressIndicator());
-       }
-      },
+    return SizedBox(
+      height: 180.h,
+      child: BlocBuilder<HomeViewModel, HomeStates>(
+        bloc: homeViewModel..getAllCategories(),
+        builder: (context, state) {
+          if (state is HomeSuccessState) {
+            return GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 5.h,
+                crossAxisSpacing: 5.w,
+                mainAxisExtent: 120.w,
+              ),
+              scrollDirection: Axis.horizontal,
+              itemCount: state.categories.length,
+              itemBuilder: (context, index) {
+                return CategoryGridItem(
+                  category: state.categories[index],
+                );
+              },
+            );
+          } else if (state is HomeErrorState) {
+            return Center(child: Text(state.message));
+          } else {
+            return Center(child: CircularProgressIndicator());
+          }
+        },
+      ),
     );
   }
 }

@@ -11,6 +11,8 @@ class AppAssets {
   static const String unSelectedHomeIcon = "assets/icons/home_icon_not_selected.png";
   static const String unSelectedCategoryIcon = "assets/icons/category_icon_not_selected.png";
   static const String unSelectedAccountIcon = "assets/icons/account_icon_not_selected.png";
+  static const String likeDislikeIcon = "assets/images/like-dislike.png";
+
 
   // More Icons
   static const String unSelectedFavouriteIcon = "assets/icons/favourite_not_selected.png";

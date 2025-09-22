@@ -1,5 +1,7 @@
 import 'package:ecommerce/core/utils/app_assets.dart';
 import 'package:ecommerce/core/utils/app_colors.dart';
+import 'package:ecommerce/domain/entities/response/cart/products.dart';
+import 'package:ecommerce/domain/entities/response/products/product.dart';
 import 'package:ecommerce/features/product_details/widgets/product_details_screen_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,10 +9,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../core/utils/app_styles.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
-  const ProductDetailsScreen({super.key});
+
+  const ProductDetailsScreen({super.key, });
 
   @override
   Widget build(BuildContext context) {
+    var product =ModalRoute.of(context)?.settings.arguments as Product;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -39,7 +43,7 @@ class ProductDetailsScreen extends StatelessWidget {
         ],
         centerTitle: true,
       ),
-      body: ProductDetailsScreenBody(),
+      body: ProductDetailsScreenBody(product: product,),
     );
   }
 }

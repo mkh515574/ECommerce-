@@ -50,6 +50,7 @@ dependencies:
   bloc: ^9.0.0
   injectable_generator: ^2.8.1
   cached_network_image: ^3.4.1
+  shared_preferences: ^2.5.3
 
 
 dev_dependencies:

@@ -5,4 +5,6 @@ class ApiEndPoints{
   static const String categoryApiUrl="api/v1/categories";
   static const String brandsApiUrl="api/v1/brands";
   static const String productsApiUrl="api/v1/products";
+  static const String cartApiUrl="api/v1/cart";
+  static const String wishListApiUrl="api/v1/wishlist";
 }

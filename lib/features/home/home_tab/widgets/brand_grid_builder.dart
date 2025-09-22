@@ -6,42 +6,41 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../viewModel/home_view_model.dart';
 import 'category_grid_item.dart';
-
-
 class BrandGridBuilder extends StatelessWidget {
-  HomeViewModel homeViewModel = getIt<HomeViewModel>();
+  final HomeViewModel homeViewModel = getIt<HomeViewModel>();
 
   BrandGridBuilder({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeViewModel, HomeStates>(
-      bloc: homeViewModel..getAllBrands(),
-
-      builder: (context, state) {
-        if(state is HomeSuccessBrandState){
-          return SizedBox(
-            height: 270.h,
-            child: GridView.builder(
+    return SizedBox(
+      height: 180.h,
+      child: BlocBuilder<HomeViewModel, HomeStates>(
+        bloc: homeViewModel..getAllBrands(),
+        builder: (context, state) {
+          if (state is HomeSuccessBrandState) {
+            return GridView.builder(
+              padding: EdgeInsets.zero,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                crossAxisSpacing: 10.w,
-                mainAxisSpacing: 10.h,
+                mainAxisSpacing: 5.h,
+                crossAxisSpacing: 4.w,
+                mainAxisExtent: 120.w,
               ),
               scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) =>
-                  CategoryGridItem(
-                    category: state.categories[index],
-                  ),
               itemCount: state.categories.length,
-            ),
-          );
-        }else if(state is HomeErrorBrandState){
-          return Text(state.message);
-        }else{
-          return Center(child: CircularProgressIndicator());
-        }
-      },
+              itemBuilder: (context, index) {
+                final brand = state.categories[index];
+                return CategoryGridItem(category: brand);
+              },
+            );
+          } else if (state is HomeErrorBrandState) {
+            return Center(child: Text(state.message));
+          } else {
+            return Center(child: CircularProgressIndicator());
+          }
+        },
+      ),
     );
   }
 }

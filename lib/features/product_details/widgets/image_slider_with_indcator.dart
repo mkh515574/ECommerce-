@@ -83,9 +83,9 @@ class _ImageSliderWithIndicatorState extends State<ImageSliderWithIndicator> {
 
                 ),
 
-                child: Image.asset(
+                child: Image.network(
                   widget.imageUrls[index],
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fill,
                   width: double.infinity,
                 ),
               );

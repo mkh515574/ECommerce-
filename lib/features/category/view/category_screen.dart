@@ -21,40 +21,43 @@ class CategoryScreen extends StatelessWidget {
         children: [
           CustomAppBar(),
           SizedBox(height: 10.h),
-          BlocBuilder<ProductViewModel, ProductStates>(
-            bloc: productViewModel..getAllProducts(),
-            builder: (context, state) {
-              if (state is ProductSuccessState) {
-                return Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.w),
-                    child: GridView.builder(
-                      shrinkWrap: true,
-                      physics: BouncingScrollPhysics(),
-                      itemBuilder: (context, index) => GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(context, AppRoutes.productRoute);
-                        },
-                        child: ProductTabItem(product: state.products[index],),
-                      ),
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 16.w,
-                        mainAxisSpacing: 16.h,
+          Expanded(
+            child: BlocBuilder<ProductViewModel, ProductStates>(
+              bloc: productViewModel..getAllProducts(),
+              builder: (context, state) {
+                if (state is ProductSuccessState) {
+                  return Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.w),
+                      child: GridView.builder(
+                        shrinkWrap: true,
+                        physics: BouncingScrollPhysics(),
+                        itemBuilder: (context, index) => GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(context, AppRoutes.productRoute,arguments: state.products[index]);
 
-                        childAspectRatio: 0.75,
+                          },
+                          child: ProductTabItem(product: state.products[index],),
+                        ),
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 16.w,
+                          mainAxisSpacing: 16.h,
+
+                          childAspectRatio: 0.75,
+                        ),
+                        itemCount: state.products.length,
                       ),
-                      itemCount: state.products.length,
                     ),
-                  ),
-                );
+                  );
 
-              } else if (state is ProductErrorState) {
-                return Text(state.message);
-              } else {
-                return Center(child: CircularProgressIndicator());
-              }
-            },
+                } else if (state is ProductErrorState) {
+                  return Text(state.message);
+                } else {
+                  return Center(child: CircularProgressIndicator());
+                }
+              },
+            ),
           ),
         ],
       ),

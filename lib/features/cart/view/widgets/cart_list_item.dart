@@ -2,11 +2,15 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:ecommerce/core/utils/app_assets.dart';
 import 'package:ecommerce/core/utils/app_colors.dart';
 import 'package:ecommerce/core/utils/app_styles.dart';
+import 'package:ecommerce/domain/entities/response/products/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../domain/entities/response/cart/products.dart';
+
 class CartListItem extends StatelessWidget {
-  const CartListItem({super.key});
+  final Products product;
+  const CartListItem({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +30,8 @@ class CartListItem extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(16.w),
-            child: Image.asset(
-              "assets/images/Frame 58.png",
+            child: Image.network(
+              product.product?.imageCover??"",
               width: 120.w,
               height: 125.h,
               fit: BoxFit.fill,
@@ -49,7 +53,7 @@ class CartListItem extends StatelessWidget {
                   children: [
 
                     AutoSizeText(
-                      "Nike Air Jordon",
+                      product.product?.title??"",
                       style: AppStyles.medium18Header,
                       maxLines: 1,
                     ),
@@ -73,11 +77,11 @@ class CartListItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   AutoSizeText(
-                    "EGP 3500",
+                    "EGP ${product.price}",
                     style: AppStyles.medium14PrimaryDark,
                     maxLines: 1,
                   ),
-                  _buildPlusOrMinsProduct(),
+                  _buildPlusOrMinsProduct(count: product.count??0),
                 ],
               ),
                 SizedBox(
@@ -100,7 +104,7 @@ class CartListItem extends StatelessWidget {
 
 
 
-Widget _buildPlusOrMinsProduct() {
+Widget _buildPlusOrMinsProduct({required int count}) {
   return Container(
     decoration: BoxDecoration(
       color: AppColors.primaryColor,
@@ -113,7 +117,7 @@ Widget _buildPlusOrMinsProduct() {
         _buildPlusItem(icon: Icons.remove),
         SizedBox(width: 10.w),
         Text(
-          "1",
+          "${count}",
           style: AppStyles.medium14PrimaryDark.copyWith(
             color: AppColors.whiteColor,
             fontSize: 20,

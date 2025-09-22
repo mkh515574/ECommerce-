@@ -6,34 +6,39 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_styles.dart';
 
-
-
 class CategoryGridItem extends StatelessWidget {
-
   final Category category;
+
   const CategoryGridItem({super.key, required this.category});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Expanded(
       child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          CircleAvatar(
-            radius: 40.w,
-            backgroundImage: NetworkImage(category.image??""),
-          ),
-          SizedBox(height: 8.h),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(50.w),
 
+            child: (category.image == null || category.image!.isEmpty)
+                ? Icon(Icons.image_not_supported)
+                : Image.network(
+                    category.image!,
+                    fit: BoxFit.fill,
+                    width: 50.w,
+                    height: 50.h,
+                  ),
+          ),
+          SizedBox(height: 3.h),
           AutoSizeText(
-            category.name??"",
+            category.name ?? "",
             style: AppStyles.medium14Category.copyWith(
               color: AppColors.primaryDark,
             ),
-
-            maxLines: 2,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
           ),
         ],
       ),
