@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../category/view/category_screen.dart';
-import '../favourites/favourite_screen.dart';
+import '../favourites/view/favourite_screen.dart';
 import '../profile/profile_screen.dart';
 import 'home_tab/home_screen_body.dart';
 

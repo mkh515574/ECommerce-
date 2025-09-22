@@ -2,11 +2,15 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:ecommerce/core/utils/app_assets.dart';
 import 'package:ecommerce/core/utils/app_colors.dart';
 import 'package:ecommerce/core/utils/app_styles.dart';
+import 'package:ecommerce/domain/entities/response/products/product.dart';
+import 'package:ecommerce/features/favourites/viewModel/favourites_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FavouriteListItem extends StatelessWidget {
-  const FavouriteListItem({super.key});
+  final Product product;
+  final VoidCallback onTap;
+  const FavouriteListItem({super.key, required this.product,required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +30,8 @@ class FavouriteListItem extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(16.w),
-            child: Image.asset(
-              "assets/images/Frame 58.png",
+            child: Image.network(
+              product.imageCover??"",
               width: 120.w,
               height: 125.h,
               fit: BoxFit.fill,
@@ -44,12 +48,15 @@ class FavouriteListItem extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    AutoSizeText(
-                      "Nike Air Jordon",
-                      style: AppStyles.medium18Header,
-                      maxLines: 1,
+                    Expanded(
+                      child: AutoSizeText(
+                        product.title ??"",
+                        style: AppStyles.medium18Header,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                      ),
                     ),
-                    Image.asset(AppAssets.unSelectedAddToFavouriteIcon)
+                    GestureDetector(onTap:onTap,child: Image.asset(AppAssets.unSelectedAddToFavouriteIcon))
                   ],
                 ),
 
@@ -66,8 +73,8 @@ class FavouriteListItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   _buildPriceText(
-                    price: "180",
-                    oldPrice: "200",
+                    price: product.price.toString(),
+                    oldPrice: (product.price !*2).toString(),
                   ),
             
                   Container(

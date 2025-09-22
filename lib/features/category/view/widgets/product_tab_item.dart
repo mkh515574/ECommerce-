@@ -1,6 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:ecommerce/core/utils/app_assets.dart';
 import 'package:ecommerce/domain/entities/response/products/product.dart';
+import 'package:ecommerce/features/cart/viewModel/cart_view_model.dart';
+import 'package:ecommerce/features/favourites/viewModel/favourites_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -25,7 +27,9 @@ class ProductTabItem extends StatelessWidget {
       ),
       child: Column(
         children: [
-          _buildImageAndFavourite(imageUrl: product.imageCover ?? ""),
+          _buildImageAndFavourite(onTap: (){
+            FavouritesViewModel.instance.addToWishList(productId: product.id!);
+          }, imageUrl: product.imageCover ?? "",isSelected: FavouritesViewModel.instance.isSelected),
 
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
@@ -43,7 +47,9 @@ class ProductTabItem extends StatelessWidget {
 
                 SizedBox(height: 3.h),
 
-                _buildRatingAndAddToCart(rating: product.ratingsAverage.toString()??"0.0", onTap: () {}),
+                _buildRatingAndAddToCart(rating: product.ratingsAverage.toString()??"0.0", onTap: () {
+                  CartViewModel.instance.addToCart(productId: product.id!);
+                }),
               ],
             ),
           ),
@@ -76,7 +82,7 @@ Widget _buildRatingAndAddToCart({
   );
 }
 
-Widget _buildImageAndFavourite({required String imageUrl}) {
+Widget _buildImageAndFavourite({required String imageUrl,required VoidCallback onTap,required bool isSelected }) {
   return Stack(
     alignment: Alignment.topRight,
     children: [
@@ -86,7 +92,7 @@ Widget _buildImageAndFavourite({required String imageUrl}) {
         height: 128.h,
         fit: BoxFit.fill,
       ),
-      Image.asset(AppAssets.selectedAddToFavouriteIcon),
+      GestureDetector(onTap: onTap,child: Image.asset(isSelected ? AppAssets.unSelectedAddToFavouriteIcon :AppAssets.selectedAddToFavouriteIcon)),
     ],
   );
 }

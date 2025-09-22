@@ -1,19 +1,21 @@
-import 'package:ecommerce/features/cart/widgets/cart_list_builder.dart';
+import 'package:ecommerce/domain/entities/response/cart/data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../core/utils/app_colors.dart';
-import '../../../core/utils/app_styles.dart';
-import '../../../core/widgets/custom_elevated_button.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_styles.dart';
+import '../../../../core/widgets/custom_elevated_button.dart';
+import 'cart_list_builder.dart';
 
 class CartScreenBody extends StatelessWidget {
-  const CartScreenBody({super.key});
+  final Data data ;
+  const CartScreenBody({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CartListBuilder(),
+        CartListBuilder(products: data.products ??[],),
         Padding(
           padding: EdgeInsets.only(
             left: 16.w,
@@ -34,7 +36,7 @@ class CartScreenBody extends StatelessWidget {
                   ),
                   SizedBox(height: 10.h),
                   Text(
-                    "EGP 3,500",
+                    "EGP ${data.totalCartPrice}",
                     style: AppStyles.medium18Header.copyWith(fontSize: 20),
                   ),
                 ],
