@@ -1,20 +1,15 @@
+class RegisterRequest{
+  String? email ;
+  String? name ;
+  String? password ;
+  String? rePassword ;
+  String? phone ;
 
-
-class RegisterRequest {
-  final String? name;
-  final String? email;
-  final String? password;
-  final String? rePassword;
-  final String? phone;
-
-  RegisterRequest ({
-    this.name,
-    this.email,
-    this.password,
-    this.rePassword,
-    this.phone,
-  });
-
+  RegisterRequest({
+    required this.name,
+    required this.email,
+    required this.phone,
+    required this.password,
+    required this.rePassword
+});
 }
-
-

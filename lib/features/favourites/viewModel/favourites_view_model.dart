@@ -1,79 +1,77 @@
-import 'package:ecommerce/domain/usecase/add_to_wish_list_use_case.dart';
-import 'package:ecommerce/domain/usecase/get_all_wish_list_use_case.dart';
-import 'package:ecommerce/domain/usecase/remove_item_wish_list_use_case.dart';
+import 'package:ecommerce/domain/entities/response/product.dart';
+import 'package:ecommerce/domain/use_cases/add_to_wishlist_use_case.dart';
+import 'package:ecommerce/domain/use_cases/delete_items_in_cart_use_case.dart';
+import 'package:ecommerce/domain/use_cases/get_items_wishlist_use_case.dart';
+import 'package:ecommerce/domain/use_cases/update_count_in_cart_use_case.dart';
 import 'package:ecommerce/features/favourites/viewModel/favourites_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../core/config/di/di.dart';
-import '../../../core/helper/shared_pref_manger.dart';
-import '../../../domain/entities/request/product_request.dart';
+import '../../../../../core/exceptions/app_exception.dart';
+import '../../../domain/use_cases/delete_items_in_wishlist_use_case.dart';
 
 @injectable
-class FavouritesViewModel extends Cubit<FavouritesStates> {
-  final AddToWishListUseCase addToWishListUseCase;
-  final GetAllWishListUseCase getAllWishListUseCase;
-  final RemoveItemWishListUseCase removeItemWishListUseCase;
+class FavouritesViewModel extends Cubit<FavouritesStates>{
+  AddToWishlistUseCase addToWishlistUseCase ;
+  GetItemsWishlistUseCase getItemsWishlistUseCase ;
+  DeleteItemsInWishlistUseCase deleteItemsInCartUseCase ;
+  UpdateCountInCartUseCase updateCountInCartUseCase ;
+  FavouritesViewModel({required this.addToWishlistUseCase,
+  required this.getItemsWishlistUseCase,required this.deleteItemsInCartUseCase,
+  required this.updateCountInCartUseCase}):super(WishListInitialState());
 
-  FavouritesViewModel({
-    required this.addToWishListUseCase,
-    required this.getAllWishListUseCase,
-    required this.removeItemWishListUseCase,
-  }) : super(FavouritesInitialState());
+  int numOfCartItems = 0 ;
+  List<Product> productsList = [];
 
-  bool isSelected = false;
-  static FavouritesViewModel get instance => getIt<FavouritesViewModel>();
+  static FavouritesViewModel get(context) => BlocProvider.of<FavouritesViewModel>(context);
 
-  String? getToken() {
-    try {
-      final prefs = SharedPrefManager();
-      return prefs.getString("token");
-    } catch (e) {
-      print("Error in getToken: ${e.toString()}");
-      return null;
+  bool selected = false;
+
+   toggleFavourites(){
+
+    selected != selected;
+    emit(ToggleState());
+
+  }
+
+
+  Future<void> addToWishList(String productId)async{
+    try{
+      emit(AddWishListLoadingState());
+      var addWishList = await addToWishlistUseCase.invoke(productId);
+
+      await getItemsWishList();
+      toggleFavourites();
+      emit(AddWishListSuccessState(addWishList: addWishList));
+    }on AppException catch(e){
+      emit(AddWishListErrorState(message: e.message));
+    }
+  }
+  Future<void> getItemsWishList()async{
+    try{
+      emit(GetWishListLoadingState());
+      var getWishListResponse = await getItemsWishlistUseCase.invoke();
+
+      //productsList = getWishListResponse.data??[];
+      emit(GetWishListSuccessState(getWishList: getWishListResponse));
+    }on AppException catch(e){
+      emit(GetWishListErrorState(message: e.message));
     }
   }
 
-  Future<void> addToWishList({required String productId}) async {
-    try {
-      final token = getToken();
-      if (token == null) throw Exception("Token is null");
 
-      final productRequest = ProductRequest(productId: productId);
-      final wishListResponse = await addToWishListUseCase.invoke(token, productRequest);
-
-      isSelected = true;
-      emit(AddToWishListSuccessState(wishListResponse, isSelected));
-    } catch (e) {
-      emit(AddToWishListErrorState(e.toString()));
+  Future<void> deleteCart(String productId)async{
+    try{
+      var deleteCartResponse = await deleteItemsInCartUseCase.invoke(productId);
+      print('deleted items successfully.');
+      await getItemsWishList();
+      emit(DeleteWishListSuccessState(getWishList: deleteCartResponse,message: 'Deleted Item Successfully.'));
+    }on AppException catch(e){
+      emit(DeleteWishListErrorState(message: e.message));
     }
   }
 
-  Future<void> removeItemWishList({required String productId}) async {
-    try {
-      final token = getToken();
-      if (token == null) throw Exception("Token is null");
 
-      final productRequest = ProductRequest(productId: productId);
-      final wishListResponse = await removeItemWishListUseCase.invoke(token, productRequest);
 
-      isSelected = false;
-      emit(DeleteItemWishListSuccessState(wishListResponse, isSelected));
-    } catch (e) {
-      emit(DeleteItemWishListErrorState(e.toString()));
-    }
-  }
 
-  Future<void> getAllWishList() async {
-    emit(FavouritesLoadingState());
-    try {
-      final token = getToken();
-      if (token == null) throw Exception("Token is null");
-
-      final wishListResponse = await getAllWishListUseCase.invoke(token);
-      emit(GetAllWishListSuccessState(wishListResponse?.data ?? []));
-    } catch (e) {
-      emit(GetAllWishListErrorState(e.toString()));
-    }
-  }
 }

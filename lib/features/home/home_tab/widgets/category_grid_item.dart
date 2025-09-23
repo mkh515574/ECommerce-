@@ -1,10 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:ecommerce/domain/entities/response/category/category.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_styles.dart';
+import '../../../../domain/entities/response/category.dart';
 
 class CategoryGridItem extends StatelessWidget {
   final Category category;
@@ -13,8 +13,7 @@ class CategoryGridItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
+    return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -41,7 +40,7 @@ class CategoryGridItem extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
         ],
-      ),
+
     );
   }
 }

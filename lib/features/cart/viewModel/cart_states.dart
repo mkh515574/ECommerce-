@@ -1,30 +1,41 @@
-import 'package:ecommerce/domain/entities/response/cart/add_to_cart.dart';
-import 'package:ecommerce/domain/entities/response/cart/cart_response.dart';
+import 'package:ecommerce/domain/entities/response/get_cart.dart';
 
 sealed class CartStates{}
-
-
 class CartInitialState extends CartStates{}
-class CartLoadingState extends CartStates{}
-class CartSuccessState extends CartStates{
-  final int num;
-  final CartResponse? cartResponse;
-  CartSuccessState(this.num,this.cartResponse);
+class AddCartLoadingState extends CartStates{}
+class AddCartErrorState extends CartStates{
+  String message ;
+  AddCartErrorState({required this.message});
 }
-class CartErrorState extends CartStates{
-  final String message;
-  CartErrorState(this.message);
-
-
+class AddCartSuccessState extends CartStates{
+  int numOfCartItems ;
+  AddCartSuccessState({required this.numOfCartItems});
 }
-class AddToCartSuccessState extends CartStates{
-
-  final AddToCart? cartResponse;
-  AddToCartSuccessState(this.cartResponse);
+class GetCartLoadingState extends CartStates{}
+class GetCartErrorState extends CartStates{
+  String message ;
+  GetCartErrorState({required this.message});
 }
-class AddToCartErrorState extends CartStates{
-  final String message;
-  AddToCartErrorState(this.message);
-
-
+class GetCartSuccessState extends CartStates{
+  GetCart getCart ;
+  String? message ;
+  GetCartSuccessState({required this.getCart,this.message});
+}
+class DeleteCartLoadingState extends CartStates{}
+class DeleteCartErrorState extends CartStates{
+  String message ;
+  DeleteCartErrorState({required this.message});
+}
+class DeleteCartSuccessState extends CartStates{
+  GetCart getCart ;
+  DeleteCartSuccessState({required this.getCart});
+}
+class UpdateCartLoadingState extends CartStates{}
+class UpdateCartErrorState extends CartStates{
+  String message ;
+  UpdateCartErrorState({required this.message});
+}
+class UpdateCartSuccessState extends CartStates{
+  GetCart getCart ;
+  UpdateCartSuccessState({required this.getCart});
 }

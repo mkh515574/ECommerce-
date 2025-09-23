@@ -1,12 +1,13 @@
 import 'package:bloc/bloc.dart';
-import 'package:ecommerce/domain/usecase/get_all_brands_use_case.dart';
+import 'package:ecommerce/domain/use_cases/get_all_categories_use_case.dart';
 import 'package:ecommerce/features/home/viewModel/home_states.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../domain/usecase/get_all_category_use_case.dart';
+import '../../../domain/use_cases/get_all_brands_use_case.dart';
+
 @injectable
 class HomeViewModel extends Cubit<HomeStates> {
-  GetAllCategoryUseCase getAllCategoryUseCase;
+  GetAllCategoriesUseCase getAllCategoryUseCase;
   GetAllBrandsUseCase getAllBrandsUseCase;
 
   HomeViewModel({required this.getAllCategoryUseCase,required this.getAllBrandsUseCase})

@@ -2,10 +2,10 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:ecommerce/core/utils/app_assets.dart';
 import 'package:ecommerce/core/utils/app_colors.dart';
 import 'package:ecommerce/core/utils/app_styles.dart';
-import 'package:ecommerce/domain/entities/response/products/product.dart';
-import 'package:ecommerce/features/favourites/viewModel/favourites_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../domain/entities/response/product.dart';
 
 class FavouriteListItem extends StatelessWidget {
   final Product product;
@@ -40,6 +40,7 @@ class FavouriteListItem extends StatelessWidget {
           SizedBox(
             width: 16.w,
           ),
+
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -41,7 +41,7 @@ class CustomAppBar extends StatelessWidget {
                   backgroundColor: AppColors.greenColor,
                   largeSize: 18,
                   label: Text(
-                    "${CartViewModel.instance.numOfCartItems}",
+                    "${CartViewModel.get(context).numOfCartItems}",
                     style: AppStyles.medium18White.copyWith(fontSize: 14),
                   ),
                   child: SizedBox(

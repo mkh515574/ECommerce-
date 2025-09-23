@@ -1,20 +1,8 @@
-
-
 import 'package:ecommerce/domain/entities/response/user.dart';
 
-class AuthResponse {
-  final String? message;
-  final User? user;
-  final String? token;
+class AuthResponse{
+  User? user ;
+  String? token ;
 
-  AuthResponse ({
-    this.message,
-    this.user,
-    this.token,
-  });
-
-
+  AuthResponse({required this.user,required this.token});
 }
-
-
-

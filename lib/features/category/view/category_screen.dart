@@ -1,8 +1,8 @@
 import 'package:ecommerce/core/config/di/di.dart';
 import 'package:ecommerce/core/utils/app_routes.dart';
-import 'package:ecommerce/features/category/view/widgets/product_tab_item.dart';
 import 'package:ecommerce/features/category/viewModel/product_states.dart';
 import 'package:ecommerce/features/category/viewModel/product_view_model.dart';
+import 'package:ecommerce/features/widgets/product_tab_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -37,14 +37,14 @@ class CategoryScreen extends StatelessWidget {
                             Navigator.pushNamed(context, AppRoutes.productRoute,arguments: state.products[index]);
 
                           },
-                          child: ProductTabItem(product: state.products[index],),
+                          child: ProductTabbItem(product: state.products[index],),
                         ),
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
                           crossAxisSpacing: 16.w,
                           mainAxisSpacing: 16.h,
 
-                          childAspectRatio: 0.75,
+                          childAspectRatio: 0.8,
                         ),
                         itemCount: state.products.length,
                       ),

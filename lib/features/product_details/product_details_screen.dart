@@ -1,12 +1,11 @@
 import 'package:ecommerce/core/utils/app_assets.dart';
 import 'package:ecommerce/core/utils/app_colors.dart';
-import 'package:ecommerce/domain/entities/response/cart/products.dart';
-import 'package:ecommerce/domain/entities/response/products/product.dart';
 import 'package:ecommerce/features/product_details/widgets/product_details_screen_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/utils/app_styles.dart';
+import '../../domain/entities/response/product.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
 
