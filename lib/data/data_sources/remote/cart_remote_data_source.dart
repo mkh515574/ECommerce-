@@ -1,14 +1,10 @@
+import 'package:ecommerce/domain/entities/response/add_cart_response.dart';
+import 'package:ecommerce/domain/entities/response/get_cart_response.dart';
 
-
-
-import 'package:ecommerce/domain/entities/request/product_request.dart';
-
-import '../../../domain/entities/response/cart/add_to_cart.dart';
-import '../../../domain/entities/response/cart/cart_response.dart';
-
-abstract class CartRemoteDataSource {
-  Future<CartResponse?> getCart(String token);
-  Future<AddToCart?> addToCart(String token,ProductRequest productId);
-
+abstract class CartRemoteDataSource{
+  Future<AddCartResponse> addCart(String productId);
+  Future<GetCartResponse> getItemsCart();
+  Future<GetCartResponse> deleteItemsCart(String productId);
+  Future<GetCartResponse> updateCountsCart(String productId, int count);
 
 }

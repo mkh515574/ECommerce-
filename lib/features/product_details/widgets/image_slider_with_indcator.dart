@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/utils/app_colors.dart';
 
@@ -107,7 +106,7 @@ class _ImageSliderWithIndicatorState extends State<ImageSliderWithIndicator> {
               decoration: BoxDecoration(
                 color: _currentIndex == index
                     ? AppColors.primaryColor
-                    : Colors.grey.withOpacity(0.5),
+                    : Colors.grey.withValues(alpha: 0.5),
                 borderRadius: BorderRadius.circular(8),
               ),
             ),

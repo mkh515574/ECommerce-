@@ -1,17 +1,14 @@
+import 'package:ecommerce/api/model/request/register_request_dto.dart';
 import 'package:ecommerce/domain/entities/request/register_request.dart';
 
-import '../model/request/register_request_dto.dart';
-
 extension RegisterRequestMapper on RegisterRequest{
-
   RegisterRequestDto toRegisterRequestDto(){
     return RegisterRequestDto(
-      name: name,
-      email: email,
       password: password,
-      rePassword: rePassword,
+      email: email,
+      rePassword:rePassword ,
       phone: phone,
+      name: name
     );
   }
-
 }

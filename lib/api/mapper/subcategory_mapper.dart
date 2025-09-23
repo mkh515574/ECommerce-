@@ -1,13 +1,13 @@
-import 'package:ecommerce/api/model/response/products/subcategory_dto.dart';
-import 'package:ecommerce/domain/entities/response/products/subcategory.dart';
+import 'package:ecommerce/api/model/response/common/sub_category_dto.dart';
+import 'package:ecommerce/domain/entities/response/sub_category.dart';
 
 extension SubcategoryMapper on SubcategoryDto{
-  Subcategory toSubCategory(){
+ Subcategory toSubCategory(){
     return Subcategory(
-      slug: slug,
       name: name,
+      slug: slug,
       id: id,
-      category: category,
+      category: category
     );
   }
 }

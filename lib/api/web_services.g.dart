@@ -58,7 +58,7 @@ class _WebServices implements WebServices {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'api/v1/auth/signin',
+            'api/v1/auth/signup',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -76,7 +76,7 @@ class _WebServices implements WebServices {
   }
 
   @override
-  Future<CategoryResponseDto> getAllCategory() async {
+  Future<CategoryResponseDto> getAllCategories() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -103,12 +103,12 @@ class _WebServices implements WebServices {
   }
 
   @override
-  Future<CategoryResponseDto> getAllBrands(int limit) async {
+  Future<BrandResponseDto> getAllBrands() async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'limit': limit};
+    final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<CategoryResponseDto>(
+    final _options = _setStreamType<BrandResponseDto>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -119,9 +119,9 @@ class _WebServices implements WebServices {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late CategoryResponseDto _value;
+    late BrandResponseDto _value;
     try {
-      _value = CategoryResponseDto.fromJson(_result.data!);
+      _value = BrandResponseDto.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -130,12 +130,12 @@ class _WebServices implements WebServices {
   }
 
   @override
-  Future<ProductsResponseDto> getAllProducts() async {
+  Future<ProductResponseDto> getAllProducts() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<ProductsResponseDto>(
+    final _options = _setStreamType<ProductResponseDto>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -146,9 +146,9 @@ class _WebServices implements WebServices {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late ProductsResponseDto _value;
+    late ProductResponseDto _value;
     try {
-      _value = ProductsResponseDto.fromJson(_result.data!);
+      _value = ProductResponseDto.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -157,45 +157,17 @@ class _WebServices implements WebServices {
   }
 
   @override
-  Future<CartResponseDto> getCart(String token) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{r'token': token};
-    _headers.removeWhere((k, v) => v == null);
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<CartResponseDto>(
-      Options(method: 'GET', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            'api/v1/cart',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late CartResponseDto _value;
-    try {
-      _value = CartResponseDto.fromJson(_result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
-      rethrow;
-    }
-    return _value;
-  }
-
-  @override
-  Future<AddToCartDto> addToCart(
+  Future<AddCartResponseDto> addToCart(
+    AddProductRequestDto productRequest,
     String token,
-    ProductRequestDto productId,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{r'token': token};
     _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
-    _data.addAll(productId.toJson());
-    final _options = _setStreamType<AddToCartDto>(
+    _data.addAll(productRequest.toJson());
+    final _options = _setStreamType<AddCartResponseDto>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -206,9 +178,9 @@ class _WebServices implements WebServices {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late AddToCartDto _value;
+    late AddCartResponseDto _value;
     try {
-      _value = AddToCartDto.fromJson(_result.data!);
+      _value = AddCartResponseDto.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -217,58 +189,26 @@ class _WebServices implements WebServices {
   }
 
   @override
-  Future<AddToWishListDto> addToWishList(
-    String token,
-    ProductRequestDto productId,
-  ) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{r'token': token};
-    _headers.removeWhere((k, v) => v == null);
-    final _data = <String, dynamic>{};
-    _data.addAll(productId.toJson());
-    final _options = _setStreamType<AddToWishListDto>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            'api/v1/wishlist',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late AddToWishListDto _value;
-    try {
-      _value = AddToWishListDto.fromJson(_result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
-      rethrow;
-    }
-    return _value;
-  }
-
-  @override
-  Future<WishListResponseDto> getAllWishList(String token) async {
+  Future<GetCartResponseDto> getItemsInCart(String token) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{r'token': token};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<WishListResponseDto>(
+    final _options = _setStreamType<GetCartResponseDto>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'api/v1/wishlist',
+            'api/v1/cart',
             queryParameters: queryParameters,
             data: _data,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late WishListResponseDto _value;
+    late GetCartResponseDto _value;
     try {
-      _value = WishListResponseDto.fromJson(_result.data!);
+      _value = GetCartResponseDto.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -277,7 +217,7 @@ class _WebServices implements WebServices {
   }
 
   @override
-  Future<AddToWishListDto> deleteItemWishList(
+  Future<GetCartResponseDto> deleteItemsInCart(
     String productId,
     String token,
   ) async {
@@ -286,7 +226,131 @@ class _WebServices implements WebServices {
     final _headers = <String, dynamic>{r'token': token};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<AddToWishListDto>(
+    final _options = _setStreamType<GetCartResponseDto>(
+      Options(method: 'DELETE', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            'api/v1/cart/${productId}',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late GetCartResponseDto _value;
+    try {
+      _value = GetCartResponseDto.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<GetCartResponseDto> updateCountsInCart(
+    String productId,
+    String token,
+    CountRequestDto countRequest,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'token': token};
+    _headers.removeWhere((k, v) => v == null);
+    final _data = <String, dynamic>{};
+    _data.addAll(countRequest.toJson());
+    final _options = _setStreamType<GetCartResponseDto>(
+      Options(method: 'PUT', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            'api/v1/cart/${productId}',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late GetCartResponseDto _value;
+    try {
+      _value = GetCartResponseDto.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<AddWishListDto> addToWishList(
+    AddProductRequestDto productRequest,
+    String token,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'token': token};
+    _headers.removeWhere((k, v) => v == null);
+    final _data = <String, dynamic>{};
+    _data.addAll(productRequest.toJson());
+    final _options = _setStreamType<AddWishListDto>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            'api/v1/wishlist',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late AddWishListDto _value;
+    try {
+      _value = AddWishListDto.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<FavouritesResponseDto> getItemsWishList(String token) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'token': token};
+    _headers.removeWhere((k, v) => v == null);
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<FavouritesResponseDto>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            'api/v1/wishlist',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late FavouritesResponseDto _value;
+    try {
+      _value = FavouritesResponseDto.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<AddWishListDto> deleteItemsInWishList(
+    String productId,
+    String token,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'token': token};
+    _headers.removeWhere((k, v) => v == null);
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<AddWishListDto>(
       Options(method: 'DELETE', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -297,9 +361,9 @@ class _WebServices implements WebServices {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late AddToWishListDto _value;
+    late AddWishListDto _value;
     try {
-      _value = AddToWishListDto.fromJson(_result.data!);
+      _value = AddWishListDto.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

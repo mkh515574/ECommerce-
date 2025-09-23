@@ -51,6 +51,9 @@ dependencies:
   injectable_generator: ^2.8.1
   cached_network_image: ^3.4.1
   shared_preferences: ^2.5.3
+  colornames: ^0.2.0
+  flutter_image_slideshow: ^0.1.6
+  smooth_page_indicator: ^1.2.1
 
 
 dev_dependencies:

@@ -1,18 +1,13 @@
-import 'package:ecommerce/api/model/response/category/category_dto.dart';
-import 'package:ecommerce/domain/entities/response/category/category.dart';
+import 'package:ecommerce/api/model/response/common/category_dto.dart';
+import 'package:ecommerce/domain/entities/response/category.dart';
 
 extension CategoryMapper on CategoryDto{
-
-  Category toCategory(){
+ Category toCategory(){
     return Category(
-      id: id,
       name: name,
       slug: slug,
-      image: image,
-      createdAt: createdAt,
-      updatedAt: updatedAt,
-
+      id: id,
+      image: image
     );
-
   }
 }

@@ -1,4 +1,5 @@
-import 'package:ecommerce/domain/entities/response/products/product.dart';
+
+import '../../../domain/entities/response/product.dart';
 
 sealed class ProductStates {}
 

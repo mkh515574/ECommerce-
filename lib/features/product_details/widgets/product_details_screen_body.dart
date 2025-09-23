@@ -3,13 +3,13 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:ecommerce/core/utils/app_assets.dart';
 import 'package:ecommerce/core/utils/app_colors.dart';
 import 'package:ecommerce/core/widgets/custom_elevated_button.dart';
-import 'package:ecommerce/domain/entities/response/products/product.dart';
 import 'package:ecommerce/features/cart/viewModel/cart_view_model.dart';
 import 'package:ecommerce/features/product_details/widgets/size_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/utils/app_styles.dart';
+import '../../../domain/entities/response/product.dart';
 import 'color_item.dart';
 import 'image_slider_with_indcator.dart';
 
@@ -165,7 +165,7 @@ class _ProductDetailsScreenBodyState extends State<ProductDetailsScreenBody> {
                   text: "Add to cart",
                   onPressed: () {
 
-                    CartViewModel.instance.addToCart(productId: widget.product.id!);
+                    CartViewModel.get(context).addToCart(widget.product.id!);
 
                   },
                   borderSideColor: AppColors.primaryColor,
@@ -191,7 +191,7 @@ Widget _buildRatingAndAddToCart({
 }) {
   return Row(
     children: [
-      _buildSoldItem(sold: "$sold"),
+      _buildSoldItem(sold: sold),
       SizedBox(width: 24.w),
 
       Image.asset(AppAssets.starIcon),

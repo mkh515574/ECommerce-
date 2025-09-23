@@ -1,5 +1,5 @@
-import 'package:ecommerce/api/model/response/category/category_dto.dart';
-import 'package:ecommerce/api/model/response/category/meta_data_dto.dart';
+import 'package:ecommerce/api/model/response/common/category_dto.dart';
+import 'package:ecommerce/api/model/response/common/metadata_dto.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'category_response_dto.g.dart';
@@ -27,6 +27,8 @@ class CategoryResponseDto {
     return _$CategoryResponseDtoToJson(this);
   }
 }
+
+
 
 
 

@@ -1,30 +1,36 @@
 import 'package:dio/dio.dart';
-import 'package:ecommerce/core/exceptions/app_exceptions.dart';
+import 'package:ecommerce/core/exceptions/app_exception.dart';
 
 class DioInterceptors extends Interceptor {
   @override
-  void OnError(DioException err, ErrorInterceptorHandler handler) {
+  void onError(DioException err, ErrorInterceptorHandler handler) {
     AppException exception;
+
     final responseData = err.response?.data;
-    String message = "Something went wrong";
+    String message = 'Something went wrong';
+
     if (responseData is Map) {
-      message =
-          (responseData['errors']?['msg'] as String?) ??
+      message = (responseData['errors']?['msg'] as String?) ??
           (responseData['message'] as String?) ??
           message;
     }
+
     if (err.type == DioExceptionType.connectionError ||
         err.type == DioExceptionType.connectionTimeout) {
-      exception = NetworkException(message: "No internet connection");
-    }else if (err.response?.statusCode !=null)  {
-      exception = ServerException(message: message,statusCode: err.response?.statusCode);
-    }else{
-      exception = UnKnownException(message: message);
+      exception = NetworkException(message: 'No internet connection');
+    } else if (err.response?.statusCode != null) {
+      exception = ServerException(
+        message: message,
+        statusCode: err.response?.statusCode,
+      );
+    } else {
+      exception = UnexpectedException(message: message);
     }
 
     handler.reject(DioException(
       requestOptions: err.requestOptions,
-      error: exception
+      error: exception,
     ));
   }
 }
+

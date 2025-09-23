@@ -1,4 +1,3 @@
-import '../../../core/exceptions/app_exceptions.dart';
 import '../../../domain/entities/response/auth_response.dart';
 
 abstract class AuthStates{}

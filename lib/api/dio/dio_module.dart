@@ -1,15 +1,15 @@
 import 'package:dio/dio.dart';
-import 'package:ecommerce/api/api_end_points.dart';
+import 'package:ecommerce/api/api_endpoints.dart';
+import 'package:ecommerce/api/dio/dio_interceptors.dart';
 import 'package:ecommerce/api/web_services.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
-import 'dio_interceptors.dart';
-
 @module
-abstract class GetItModule {
+abstract class GetItModule{
   @singleton
-  BaseOptions provideBaseOptions() {
+  @injectable
+  BaseOptions provideBaseOptions(){
     return BaseOptions(
       baseUrl: ApiEndPoints.baseUrl,
       receiveDataWhenStatusError: true,
@@ -19,30 +19,28 @@ abstract class GetItModule {
   }
 
   @singleton
-  PrettyDioLogger providePrettyDioLogger() {
+  @injectable
+  PrettyDioLogger providePrettyDioLogger(){
     return PrettyDioLogger(
-      request: true,
-      requestHeader: true,
-      requestBody: true,
+      request: true ,
       responseBody: true,
-      responseHeader: false,
-      error: true,
+      requestBody: true,
+      responseHeader: true ,
+      requestHeader: true,
+      error: true
     );
   }
 
   @singleton
-  Dio provideDio(
-      BaseOptions baseOptions,
-      PrettyDioLogger prettyDioLogger,
-      ) {
-    final dio = Dio(baseOptions);
+  @injectable
+  Dio provideDio(BaseOptions baseOptions,PrettyDioLogger prettyDioLogger){
+    var dio =  Dio(baseOptions);
+    //todo: dio interceptors
     dio.interceptors.add(DioInterceptors());
     dio.interceptors.add(prettyDioLogger);
-    return dio;
+    return dio ;
   }
-
   @singleton
-  WebServices provideWebServices(Dio dio) {
-    return WebServices(dio);
-  }
+  @injectable
+  WebServices provideWebServices(Dio dio) => WebServices(dio);
 }

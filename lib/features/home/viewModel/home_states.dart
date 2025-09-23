@@ -1,4 +1,5 @@
-import 'package:ecommerce/domain/entities/response/category/category.dart';
+
+import '../../../domain/entities/response/category.dart';
 
 sealed class HomeStates {}
 

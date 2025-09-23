@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:ecommerce/domain/usecase/get_all_products_use_case.dart';
+import 'package:ecommerce/domain/use_cases/get_all_products_use_case.dart';
 import 'package:ecommerce/features/category/viewModel/product_states.dart';
 import 'package:injectable/injectable.dart';
 @injectable

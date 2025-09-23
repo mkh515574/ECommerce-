@@ -23,6 +23,7 @@ class AppAssets {
   static const String shoppingCart = "assets/icons/shopping_cart.png";
   static const String searchIcon = "assets/icons/search.png";
   static const String plusIcon = "assets/icons/🦆 icon _plus circle_.png";
+  static const String emptyCart = "assets/images/empty-cart.png";
 
   // Announcements Images
   static const String announcement1 = "assets/images/banner-1.png";
