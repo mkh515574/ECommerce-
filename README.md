@@ -16,13 +16,3 @@ An **E-Commerce mobile application** built with **Flutter** to provide a simple 
 
 ---
 
-## 🚀 Getting Started
-This project is a starting point for a Flutter application.  
-
-### Prerequisites
-- Install [Flutter](https://docs.flutter.dev/get-started/install)  
-- Run the following commands:  
-
-```bash
-flutter pub get
-flutter run
