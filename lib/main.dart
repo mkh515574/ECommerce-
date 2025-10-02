@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
     return MultiBlocProvider(
       providers: [
         BlocProvider<CartViewModel>(
@@ -52,6 +53,7 @@ class MyApp extends StatelessWidget {
           initialRoute: route,
           routes: AppRoutes.routes,
         ),
+
       ),
     );
   }

@@ -1,16 +1,18 @@
-# ecommerce
+# 🛍️ E-Commerce App
 
-A new Flutter project.
+An **E-Commerce mobile application** built with **Flutter** to provide a simple and seamless shopping experience.  
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 📌 Features
+- Modern and responsive user interface.  
+- Product listing with details (image, name, price, description).  
+- Add to cart functionality.  
+- User account management.  
+- Scalable architecture ready for integration with:  
+  - **Firebase** (authentication & database).  
+  - **Payment gateways**.  
+  - **Order tracking system**.  
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

@@ -7,6 +7,7 @@ import '../../features/category/view/category_screen.dart';
 import '../../features/home/home_screen.dart';
 import '../../features/product_details/product_details_screen.dart';
 
+
 class AppRoutes {
   static String homeRoute = "home";
   static String productRoute = "productDetails";
@@ -17,11 +18,13 @@ class AppRoutes {
 
 
   static Map<String, Widget Function(BuildContext)> routes = {
+
     homeRoute: (context) =>  HomeScreen(),
     productRoute: (context) =>  ProductDetailsScreen(),
     cartRoute: (context) => const CartScreen(),
     loginRoute: (context) =>  LoginScreen(),
     categoryRoute: (context) =>  CategoryScreen(),
     registerRoute: (context) =>  RegisterScreen(),
+
   };
 }

@@ -55,7 +55,6 @@ dependencies:
   flutter_image_slideshow: ^0.1.6
   smooth_page_indicator: ^1.2.1
 
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

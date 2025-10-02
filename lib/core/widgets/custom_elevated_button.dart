@@ -1,6 +1,8 @@
 import 'package:ecommerce/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 import '../utils/app_colors.dart';
 
@@ -13,6 +15,7 @@ class CustomElevatedButton extends StatelessWidget {
     this.textStyle,
     required this.text,
     this.buttonContent,
+
     this.buttonContent1,
 
   });
@@ -23,12 +26,14 @@ class CustomElevatedButton extends StatelessWidget {
   final TextStyle? textStyle;
   final String text;
   final Widget? buttonContent;
+
   final Widget? buttonContent1;
 
 
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
+
 
     return ElevatedButton(
       onPressed: onPressed,
@@ -62,6 +67,7 @@ class CustomElevatedButton extends StatelessWidget {
 
         ],
       ),
+
     );
   }
 }
