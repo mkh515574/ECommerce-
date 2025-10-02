@@ -38,6 +38,22 @@ dependencies:
   flutter_screenutil: ^5.9.3
   fluttertoast: ^8.2.12
   auto_size_text: ^3.0.0
+  carousel_slider: ^5.1.1
+  animated_read_more_text: ^0.0.6
+  retrofit: ^4.7.2
+  dio: ^5.9.0
+  injectable: ^2.5.1
+  get_it: ^8.2.0
+  pretty_dio_logger: ^1.4.0
+  json_annotation: ^4.9.0
+  flutter_bloc: ^9.1.1
+  bloc: ^9.0.0
+  injectable_generator: ^2.8.1
+  cached_network_image: ^3.4.1
+  shared_preferences: ^2.5.3
+  colornames: ^0.2.0
+  flutter_image_slideshow: ^0.1.6
+  smooth_page_indicator: ^1.2.1
 
 dev_dependencies:
   flutter_test:
@@ -49,6 +65,10 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
+  retrofit_generator: ^10.0.1
+
+  build_runner: ^2.7.1
+  json_serializable: ^6.10.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

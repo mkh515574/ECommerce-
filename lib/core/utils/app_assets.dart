@@ -1,22 +1,29 @@
 class AppAssets {
   // Selected Icons
   static const String selectedHomeIcon = "assets/icons/home_icon_selected.png";
-  static const String editIcon = "assets/icons/edit.png";
+  static const String editIcon = "assets/icons/edit_icon.png";
   static const String selectedCategoryIcon = "assets/icons/category_icon_selected.png";
   static const String selectedAccountIcon = "assets/icons/account_icon_selected.png";
   static const String selectedAddToFavouriteIcon = "assets/icons/add_to_favourite.png";
+  static const String unSelectedAddToFavouriteIcon = "assets/icons/remove_fav.png";
 
 // Not selected icons
   static const String unSelectedHomeIcon = "assets/icons/home_icon_not_selected.png";
   static const String unSelectedCategoryIcon = "assets/icons/category_icon_not_selected.png";
   static const String unSelectedAccountIcon = "assets/icons/account_icon_not_selected.png";
+  static const String likeDislikeIcon = "assets/images/like-dislike.png";
+
 
   // More Icons
   static const String unSelectedFavouriteIcon = "assets/icons/favourite_not_selected.png";
   static const String selectedFavouriteIcon = "assets/icons/favourite_selected.png";
   static const String starIcon = "assets/icons/star.png";
+  static const String removeIcon = "assets/icons/delete.png";
   static const String routeLogo = "assets/icons/route_logo.png";
   static const String shoppingCart = "assets/icons/shopping_cart.png";
+  static const String searchIcon = "assets/icons/search.png";
+  static const String plusIcon = "assets/icons/🦆 icon _plus circle_.png";
+  static const String emptyCart = "assets/images/empty-cart.png";
 
   // Announcements Images
   static const String announcement1 = "assets/images/banner-1.png";
@@ -38,4 +45,5 @@ class AppAssets {
   static const String shoesItemImage3 = "assets/images/items/shoes-3.png";
 
   static const String appBarLeading = 'assets/images/Route.png';
+
 }
